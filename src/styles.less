@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@taiga-ui/styles/taiga-ui-theme.less';
+@import '@taiga-ui/styles/taiga-ui-fonts.less';
+
+[tuiTheme='light'],
+:root {
+  --tui-background-base: #f0f0f0;
+}
+
+[tuiTheme='dark'] {
+  --tui-background-base: #1a1a2e;
+}
+
+body {
+  margin: 0;
+  font-family: var(--tui-font-text);
+  background: var(--tui-background-base);
+  color: var(--tui-text-primary);
+}

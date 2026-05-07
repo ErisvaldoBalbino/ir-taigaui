@@ -1,0 +1,79 @@
+<div style="max-width: 50rem; margin: 0 auto;">
+
+  <h2 tuiTitle style="margin-bottom: 2rem; text-align: center; font-weight: 700; color: var(--tui-text-primary); font-size: 2rem;">
+    Enquetes
+  </h2>
+  <div style="background-color: var(--tui-background-base); border-radius: 1rem; border: 1px solid var(--tui-border-normal); box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 2rem; margin-bottom: 3rem;">
+
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <label tuiLabel style="font-weight: 500;">Título da Enquete *</label>
+      <div style="display: flex; gap: 1rem;">
+        <tui-textfield style="flex: 1;">
+          <input tuiInput [(ngModel)]="novoTitulo" placeholder="Ex: Quem vai ganhar a copa do mundo de 2026?" />
+        </tui-textfield>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <label tuiLabel style="font-weight: 500;">Descrição</label>
+        <tui-textfield style="flex: 1;">
+          <input tuiInput [(ngModel)]="novaDescricao" placeholder="Contexto sobre a enquete" />
+        </tui-textfield>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <label tuiLabel style="font-weight: 500;">Opções da Enquete *</label>
+        
+        @for (opcao of novasOpcoes; track opcao.id; let i = $index) {
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <tui-textfield style="flex: 1;">
+              <input tuiInput [(ngModel)]="opcao.value" placeholder="Opção {{ i + 1 }}" />
+              <button 
+                tuiButton 
+                size="s" 
+                appearance="flat"
+                (click)="removerOpcaoForm(i)"
+                [disabled]="novasOpcoes.length <= 2"
+              >
+                <tui-icon [icon]="'@tui.trash'" style="margin-right: 0.5rem;"></tui-icon>
+                Remover
+            </button>
+            </tui-textfield>
+          </div>
+        }
+
+        <div style="margin-top: 0.5rem;">
+          <button tuiButton size="m" appearance="outline" (click)="adicionarOpcaoForm()">
+            + Adicionar Opção
+          </button>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; margin-top: 1rem;">
+        <button tuiButton size="m" appearance="primary" (click)="criarEnquete()">Criar Enquete</button>
+      </div>
+    </div>
+  </div>
+
+  <hr style="border: none; border-top: 1px solid var(--tui-border-normal); margin: 3rem 0;" />
+
+  @if (polls.length === 0) {
+    <div style="text-align: center; color: var(--tui-text-secondary); padding: 4rem 0;">
+      <h3 tuiTitle>
+        Nenhuma enquete criada
+        <span tuiSubtitle>Crie sua primeira enquete usando o formulário acima</span>
+      </h3>
+    </div>
+  } @else {
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr)); gap: 2rem; align-items: start;">
+      @for (poll of polls; track poll) {
+        <app-card-component 
+          [titulo]="poll.titulo" 
+          [descricao]="poll.descricao" 
+          [options]="poll.options"
+          (onVotarOpcao)="votarNaEnquete(poll, $event)"
+          style="width: 100%; display: block;"
+        ></app-card-component>
+      }
+    </div>
+  }
+</div>
