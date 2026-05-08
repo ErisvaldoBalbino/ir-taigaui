@@ -2,10 +2,19 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from '../card-component/card-component';
 import { TuiButton, TuiInput, TuiTitle, TuiIcon, TuiNotificationService } from '@taiga-ui/core';
+import { TuiCardLarge } from '@taiga-ui/layout';
 
 @Component({
   selector: 'app-main-polls-component',
-  imports: [FormsModule, CardComponent, TuiButton, TuiInput, TuiTitle, TuiIcon],
+  imports: [
+    FormsModule, 
+    CardComponent, 
+    TuiButton, 
+    TuiInput, 
+    TuiTitle, 
+    TuiIcon, 
+    TuiCardLarge
+  ],
   templateUrl: './main-polls-component.html',
   styleUrl: './main-polls-component.less',
 })
