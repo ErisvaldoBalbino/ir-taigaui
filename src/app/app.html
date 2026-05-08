@@ -1,5 +1,5 @@
 <tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null">
-    <div style="position: absolute; top: 1rem; right: 1rem; z-index: 1000;">
+    <div style="position: fixed; top: 1rem; right: 1rem;">
         <button
             tuiButton
             appearance="secondary"
@@ -11,7 +11,7 @@
         </button>
     </div>
 
-    <div style="padding-top: 4rem; min-height: 100vh;">
+    <div style="padding-top: 1rem; min-height: 100vh;">
         <app-main-polls-component style="width: 100%;"></app-main-polls-component>
     </div>
 </tui-root>
