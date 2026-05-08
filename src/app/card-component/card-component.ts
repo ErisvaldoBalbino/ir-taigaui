@@ -1,14 +1,11 @@
 import { Component, input, output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { TuiInput, TuiTitle, TuiAppearance } from '@taiga-ui/core';
+import { TuiTitle, TuiAppearance } from '@taiga-ui/core';
 import { TuiBadge } from '@taiga-ui/kit';
 import { TuiCardLarge, TuiHeader } from '@taiga-ui/layout';
 
 @Component({
   selector: 'app-card-component',
   imports: [
-    FormsModule, 
-    TuiInput, 
     TuiTitle, 
     TuiAppearance, 
     TuiBadge,
